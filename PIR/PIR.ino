@@ -48,7 +48,7 @@ void setup() {
 
 bool checkMqttConnection(){
   if (!client.connected()) {
-    if (client.connect(AP_NAME)) {
+    if (MQTT_AUTH ? client.connect(AP_NAME,MQTT_USERNAME, MQTT_PASSWORD) : client.connect(AP_NAME)) {
       //SUBSCRIÇÃO DE TOPICOS
       Serial.println("CONNECTED");
     }
